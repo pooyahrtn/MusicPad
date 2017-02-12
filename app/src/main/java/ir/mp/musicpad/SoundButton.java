@@ -55,15 +55,15 @@ public class SoundButton extends ImageButton {
         return super.onTouchEvent(event);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
-        int dimension = Math.min(width , height);
-        setMeasuredDimension(dimension, dimension);
-    }
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        ViewGroup.LayoutParams layoutParams = getLayoutParams();
+//        int width = MeasureSpec.getSize(widthMeasureSpec);
+//        int height = MeasureSpec.getSize(heightMeasureSpec);
+//        int dimension = Math.min(width , height);
+//        setMeasuredDimension(dimension, dimension);
+//    }
 
     public void setSoundId(int soundId) {
         mSoundId = soundId;

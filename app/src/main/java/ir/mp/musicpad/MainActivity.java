@@ -4,11 +4,14 @@ import android.app.DownloadManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 
 import java.io.File;
 import java.io.IOException;
@@ -126,6 +129,27 @@ public class MainActivity extends AppCompatActivity {
             SoundButton soundButton = (SoundButton)findViewById(buttonId);
             mButtonSparseArray.put(i ,soundButton);
         }
+
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.buttons_frame_layout);
+        ViewTreeObserver treeObserver = frameLayout.getViewTreeObserver();
+        treeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    ButtonPlacer.ViewContainer viewContainer = new ButtonPlacer.ViewContainer();
+                    frameLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    viewContainer.margin = ButtonPlacer.ViewContainer.getPixelFromDp(getResources() , 2);
+                    viewContainer.buttons = mButtonSparseArray;
+                    viewContainer.mFrameLayout = frameLayout;
+                    viewContainer.height = frameLayout.getMeasuredHeight();
+                    viewContainer.width = frameLayout.getMeasuredWidth();
+                    ButtonPlacer.place(viewContainer , 4 , 3);
+                }
+
+
+            }
+        });
+
     }
 
 }
