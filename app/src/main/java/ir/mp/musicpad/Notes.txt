@@ -1,0 +1,4 @@
+
+Native code is primarily useful when you have an existing native codebase that you want to port to Android,
+ not for "speeding up" parts of your Android app written with the Java language.
+

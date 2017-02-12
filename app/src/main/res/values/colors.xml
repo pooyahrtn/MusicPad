@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="sound_button_back_color">#CDDC39</color>
+    <color name="sound_button_back_color_light">#dfed56</color>
+
+    <color name="sound_button_back_color_pressed">#dce95f</color>
+    <color name="sound_button_back_color_light_pressed">#f3ff80</color>
 </resources>
